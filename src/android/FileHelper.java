@@ -59,7 +59,21 @@ public class FileHelper {
         else
             realPath = FileHelper.getRealPathFromURI_API11_And_Above(cordova.getActivity(), uri);
 
-        return realPath;
+        // !!!BEGIN EDIT!!!
+        // If the path is still null try the getPath that is used for files
+        if (realPath == null) {
+            try {
+                realPath = uri.getPath();
+            } catch (Exception e) {
+                System.out.println("!-------------> Could not uri.getPath()");
+            }
+        }
+        System.out.println("!-------------> realPath: "+realPath);
+
+        // If null, return empty string to prevent app crashing
+        return realPath != null ? realPath : "";
+        // return realPath;
+        // !!!END EDIT!!!
     }
 
     /**
