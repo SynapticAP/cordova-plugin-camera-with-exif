@@ -68,6 +68,17 @@
         <framework src="com.android.support:support-v4:$ANDROID_SUPPORT_V4_VERSION" />
         <framework src="com.google.code.gson:gson:2.8.5" />
 
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <queries>
+                <intent>
+                    <action android:name="android.media.action.IMAGE_CAPTURE" />
+                </intent>
+                <intent>
+                    <action android:name="android.intent.action.GET_CONTENT" />
+                </intent>
+            </queries>
+        </config-file>        
+
         <js-module src="www/CameraPopoverHandle.js" name="CameraPopoverHandle">
             <clobbers target="CameraPopoverHandle" />
         </js-module>
